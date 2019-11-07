@@ -10,4 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','allpagescontroller@index')->name('index');
+//Frontend Index Page Route
+Route::get('/','FrontendController@frontend')->name('index');
+//Frontend Register Page Route
+Route::get('/signup','FrontendController@signup')->name('register');
+
+
+//Admin Page Route Group
+
+Route::group(	['prefix'=>'admin'], 	function(){
+
+	Route::get('/','AdminpageController@index')->name('adminindexpage');
+	Route::get('/logout','AdminpageController@logout')->name('logout');
+	Route::get('/createproduct','AdminpageController@createproduct')->name('createproduct');
+});
